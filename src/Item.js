@@ -5,7 +5,9 @@ import Details from './Details';
 
 class Item extends React.Component {
      render(){
-     	var styles = {
+     	
+
+     	const styles = {
      		base: {
      			fontSize:"20px", 
      			color:"#66b3ff", 
@@ -20,12 +22,16 @@ class Item extends React.Component {
      		}
      	}
 
+
+
      	return (
      		<div>
 	     		<div style={[styles.base, this.props.selected && styles.selected]} onClick={this.props.onClick}>{this.props.item.title}</div>
+	     		
 	     		{
 	     			this.props.selected? <Details item={this.props.item} />:null
 	     		}
+	     		
 	     	</div>
      	) 
   }
