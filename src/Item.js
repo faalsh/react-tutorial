@@ -20,9 +20,11 @@ class Item extends React.Component {
      		}
      	}
 
+        const {selected, item, onClick} = this.props
+
      	return (
      		<div>
-	     		<div style={[styles.base, this.props.selected && styles.selected]} onClick={this.props.onClick}>{this.props.item.title}</div>
+	     		<div style={[styles.base, selected && styles.selected]} onClick={onClick}>{item.title}</div>
 	     		{
 	     			this.props.selected? <Details item={this.props.item} />:null
 	     		}

@@ -20,8 +20,8 @@ class ItemList extends React.Component {
 
 	render(){
 
-		var items = this.props.items.map(function(item){
-		  	var selected = item.id === this.state.selectedItem
+		const items = this.props.items.map(function(item){
+		  	const selected = item.id === this.state.selectedItem
 		    return <Item key={item.id} onClick={this.handleClick.bind(this,item)} selected={selected} item={item} />;
 		},this);
 		

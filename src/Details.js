@@ -2,7 +2,7 @@ import React from 'react';
 
 class Details extends React.Component {
     render(){
-	var renderItem = function(item){
+	const renderItem = function(item){
   	return (
     	<div style={{paddingLeft: "20px"}}>
     		<div><span>ID: </span><span>{item.id}</span></div>			
@@ -11,13 +11,12 @@ class Details extends React.Component {
     )
   };
   
-	var item = this.props.item
-  var renderedItem;
-  renderedItem = (Object.keys(item).length !== 0 ?  renderItem(item):null)
+	const {item} = this.props
+  const renderedItem = (Object.keys(item).length !== 0 ?  renderItem(item):null)
 	
   return (
   	<div>
-  	{renderedItem}
+    	{renderedItem}
     </div>
   )
 }

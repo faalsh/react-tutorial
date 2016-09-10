@@ -17,7 +17,9 @@ class PageItem extends React.Component {
       	color: "white"
       }
     }
-  	return <span style={[styles.base, this.props.current && styles.selected]} key="this.props.pageNumber" onClick={this.props.onClick}>{this.props.pageNumber}</span>;
+
+    const {current, pageNumber, onClick} = this.props
+  	return <span style={[styles.base, current && styles.selected]} key="pageNumber" onClick={onClick}>{pageNumber}</span>;
   }
 }
 

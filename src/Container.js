@@ -19,17 +19,17 @@ class Container extends React.Component {
 	  this.setState({details:item})
 	}
 	render(){
-	  var items = this.state.items;
-	  var maxPerPage = this.state.maxPerPage
-	  var currentPage = this.state.currentPage
-	  var numberOfPages = Math.ceil(items.length / maxPerPage)
-	  var items = items.slice((currentPage-1)*maxPerPage,(currentPage*maxPerPage))
+
+		const {items, maxPerPage, currentPage} = this.state
+	  
+		const numberOfPages = Math.ceil(items.length / maxPerPage)
+		const subItems = items.slice((currentPage-1)*maxPerPage,(currentPage*maxPerPage))
 
 	  return (
 	    <div style={{marginTop:"50px", width:"50%"}}>
-	      <Pagination size={numberOfPages} current={this.state.currentPage} onChange={this.handlePageSelected.bind(this)}/>
-	      <ItemList onClick={this.handleItemSelected.bind(this)} items={items} />
-	      <Pagination size={numberOfPages} current={this.state.currentPage} onChange={this.handlePageSelected.bind(this)}/>
+	      <Pagination size={numberOfPages} current={currentPage} onChange={this.handlePageSelected.bind(this)}/>
+	      <ItemList onClick={this.handleItemSelected.bind(this)} items={subItems} />
+	      <Pagination size={numberOfPages} current={currentPage} onChange={this.handlePageSelected.bind(this)}/>
 	    </div>
 
 	  )

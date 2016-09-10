@@ -54,14 +54,21 @@ class Pagination extends React.Component {
 	  	},
 	  	hidden: {
 	  		visibility: "hidden"
+	  	},
+	  	parent: {
+	  		WebkitUserSelect: "none",
+	  		MozUserSelect: "none",
+	  		MsUserSelect: "none"
 	  	}
 	  }
 
-	  var prev = <span onClick={this.previous.bind(this)} style={[styles.base, this.state.current == 1 && styles.hidden]}>&lt;</span>
-	  var next = <span onClick={this.next.bind(this)} style={[styles.base, this.state.current == this.state.size && styles.hidden]}>&gt;</span>
+	  const {current, size} = this.state
+
+	  const prev = <span onClick={this.previous.bind(this)} style={[styles.base, current == 1 && styles.hidden]}>&lt;</span>
+	  const next = <span onClick={this.next.bind(this)} style={[styles.base, current == size && styles.hidden]}>&gt;</span>
 
 	    return (
-	    	<div>
+	    	<div style={styles.parent}>
 	      		{prev}
 				{this.renderList()}
 				{next}
