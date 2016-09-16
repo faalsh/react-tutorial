@@ -1,17 +1,24 @@
-.example-enter {
-  opacity: 0.01;
+.details-enter {
+	height: 0px;
+	overflow: hidden;
+	transform: scaleY(0);
 }
 
-.example-enter.example-enter-active {
-  opacity: 1;
-  transition: opacity 500ms ease-in;
+.details-enter.details-enter-active {
+	height: 36px;
+	overflow: visible;
+	transform: scaleY(1);
+	transition: all 200ms ease-in-out;
 }
 
-.example-leave {
-  opacity: 1;
+.details-leave {
+	overflow: visible;
+	height:36px;
 }
 
-.example-leave.example-leave-active {
-  opacity: 0.01;
-  transition: opacity 300ms ease-in;
+.details-leave.details-leave-active {
+	height: 0px;
+	transform: scaleY(0);
+	overflow: hidden;
+	transition: all 200ms ease-in-out;
 }

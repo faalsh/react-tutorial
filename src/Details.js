@@ -3,45 +3,40 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 
 class Details extends React.Component {
+
     render(){
+
+      const {item, open} = this.props
+
       const transitionOptions = {
-        transitionName: "expand",
-        transitionEnterTimeout: 500, 
-        transitionLeaveTimeout: 500,
-        transitionAppear: true,
-        transitionAppearTimeout: 500,
+        transitionName: "details",
+        transitionEnterTimeout: 200,
+        transitionLeaveTimeout: 200,
       }
 
     	const renderItem = function(item){
-      	return (
-          <ReactCSSTransitionGroup 
-        transitionName="example" 
-        transitionAppear={false}
-        transitionEnterTimeout={500} 
-          transitionLeaveTimeout={300} 
-        transitionAppearTimeout={500}>
-          	<div style={{paddingLeft: "20px"}}>
-          		<div><span>ID: </span><span>{item.id}</span></div>			
-      	       <div><span>Title: </span><span>{item.title}</span></div>
-      	    </div>
-          </ReactCSSTransitionGroup>
-        )
+
+        return open ?  
+            <div key={item.id} style={{paddingLeft: "20px"}}>
+              <div><span>ID: </span><span>{item.id}</span></div>      
+              <div><span>Title: </span><span>{item.title}</span></div>
+            </div>
+          :null	
       };
-      
-    	const item = this.props.item
-    	
+
       return (
         
-        	<div>
-          	 {Object.keys(item).length !== 0 ? renderItem(item):null}
-          </div>
+        	<ReactCSSTransitionGroup {...transitionOptions}>
+          	 {renderItem(item)}
+          </ReactCSSTransitionGroup>
         
       )
   }
 }
 
 Details.propTypes = {
-	item: React.PropTypes.object
+	item: React.PropTypes.object,
+  open: React.PropTypes.bool
 }
 
 export default Details;
